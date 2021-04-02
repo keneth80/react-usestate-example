@@ -30,6 +30,6 @@
         "webpack-merge": "~4.2"
     },
     "dependencies": {
-        "d3": "^5.9.2"
+        "virtual-dom": "^2.1.1"
     }
 }
