@@ -15,12 +15,12 @@ Q. react의 useState함수를 이해하기 위해 구현을 해보자.
 
 
 4. 갱신 된 virtual dom tree로 html node로 생성하여 반영한다.
-![요구사항](./src/solution/presenter/react-usestate-example.png)
+![요구사항](./src/solution/presenter/assets/react-usestate-example.png)
 
 
 
 ## 기능 작동 이미지
-![example_image](./src/solution/presenter/example.png)
+![example_image](./src/solution/presenter/assets/example.png)
 
 
 ## 실행 방법 / 문제 풀이 방법
