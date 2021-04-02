@@ -1,14 +1,14 @@
 {
-    "name": "es6-webpack-seed",
+    "name": "react-usestate-example",
     "version": "1.0.0",
-    "description": "webpack seed",
+    "description": "Let's look at React's useState mechanism",
     "main": "index.js",
     "scripts": {
         "build": "cross-env NODE_ENV=development webpack --mode development",
         "build-prod": "cross-env NODE_ENV=production webpack --mode production",
         "dev": "webpack-dev-server --open --mode development"
     },
-    "author": "",
+    "author": "pretty9967@naver.com",
     "license": "ISC",
     "devDependencies": {
         "@babel/core": "^7.4.5",
