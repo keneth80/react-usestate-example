@@ -71,7 +71,9 @@ function Members({ list }) {
 				h('button', { style: 'margin-left: 10px;', onclick: () => addRow() }, ['Add']),
 			]),
 			h('div', { id: 'list-container', style: 'height: 300px; overflow: auto;'}, [
-				members.map((item, index) => h('span', { key: 'item' + index, style: 'display: block;' }, [item]))
+				members && members.length ?
+				members.map((item, index) => h('span', { key: 'item' + index, style: 'display: block;' }, [item])) :
+				[]
 			])
 		]);
 	}
