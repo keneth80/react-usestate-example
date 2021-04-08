@@ -47,8 +47,12 @@ export class CustomComponent {
     * @description react useState함수와 같은 역할
     */
     useState(value) {
+        // 초기값 지정
+		if (!this.state) {
+			this.state = { value };
+		}
         return [
-            value,
+            this.state.value,
             data => this.updateState({ data })
         ];
     }

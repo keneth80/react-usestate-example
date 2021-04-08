@@ -7,7 +7,7 @@ import { h, create, diff, patch } from 'virtual-dom';
 */
 function Members({ list }) {
 	// data를 저장하는 state 변수
-	let state = { list };
+	let state = null;
 	// virtual dom tree
 	let virtualDomTree = null;
 	// html node
@@ -39,8 +39,14 @@ function Members({ list }) {
 	* @description react useState함수와 같은 역할
 	*/
 	const useState = function (value) {
+		// 초기값 지정
+		if (!state) {
+			state = { value };
+		}
+
+		// 두번째 값인 함수로 state를 변경해야만 값이 바뀌도록 한다.
 		return [
-			value,
+			state.value,
 			list => updateState({ list })
 		];
 	}

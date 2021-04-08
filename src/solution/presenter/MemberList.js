@@ -11,7 +11,6 @@ class MemberList extends CustomComponent {
     */
     constructor(state) {
         super();
-        this.state = state;
         // data가 반영된 virtual dom의 정보를 저장한다.
         this.virtualDomTree = this.setVirtualTreeNode(state);
         // virtual dom을 html node로 생성.
@@ -47,7 +46,7 @@ class MemberList extends CustomComponent {
                 h('button', { style: 'margin-left: 10px;', onclick: () => addRow() }, ['Add']),
             ]),
             h('div', { id: 'list-container', style: 'height: 300px; overflow: auto;'}, [
-                list.map((item, index) => h('span', { key: 'item' + index, style: 'display: block;' }, [item]))
+                members.map((item, index) => h('span', { key: 'item' + index, style: 'display: block;' }, [item]))
             ])
         ]);
     }
