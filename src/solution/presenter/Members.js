@@ -59,6 +59,9 @@ function Members({ list }) {
 	* @description list를 인자로 받아 data가 binding 된 virtual tree 구축 및 action 함수 정의.
 	*/
 	const setVirtualTreeNode = function ({ list }) {
+		// members 라는 이름으로 state 변수를 선언하고 넘겨받은 값으로 초기화 하고
+		// members의 값을 변경하려면 setMembers를 호출합니다.
+		// 이때 대괄호 왼쪽의 state 변수는 사용하고 싶은 이름으로 선언할 수 있음. (자바스크립트 문법인 배열구조분해)
 		const [members, setMembers] = useState(list);
 
 		const onKeyUp = (event) => {
