@@ -12,6 +12,7 @@ function Members({ list }) {
 	let virtualDomTree = null;
 	// html node
 	let htmlNode = null;
+
 	/**
 	* @name updateState
 	* @param {*} newState
@@ -46,7 +47,7 @@ function Members({ list }) {
 
 		// 두번째 값인 함수로 state를 변경해야만 값이 바뀌도록 한다.
 		return [
-			state.value,
+			state.value, // 최근 갱신된 값을 제공한다.
 			list => updateState({ list })
 		];
 	}
