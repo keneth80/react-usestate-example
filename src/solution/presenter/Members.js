@@ -73,8 +73,9 @@ function Members({ list }) {
 		};
 
 		const addRow = () => {
-			members.push(htmlNode.querySelector('#memberInput').value);
-			htmlNode.querySelector('#memberInput').value = '';
+			const inputElement = htmlNode.querySelector('#memberInput');
+			members.push(inputElement.value);
+			inputElement.value = '';
 			setMembers(members);
 		}
 
