@@ -1,4 +1,5 @@
 import { diff, patch } from 'virtual-dom';
+import { cloneObject } from './util';
 
 /**
 * @name CustomComponent class
@@ -27,7 +28,7 @@ export class CustomComponent {
         // state를 업데이트한다.
         // 기존 데이터와 새로운 데이터를 병합하여 새로운 state를 저장한다.
         // 현재는 키가 list 하나이므로 newState의 데이터로 덮어질 것.
-        this.state = Object.assign({}, this.state, newState);
+        this.state = cloneObject(newState);
 
         // 변경된 state 정보를 가지고 tree 를 갱신한다.
         const newVirtualDomTree = this.setVirtualTreeNode(this.state);

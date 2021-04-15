@@ -1,4 +1,5 @@
 import { h, create, diff, patch } from 'virtual-dom';
+import { cloneObject } from './util';
 
 /**
 * @name 생성자 함수
@@ -20,7 +21,7 @@ function Members({ list }) {
 	*/
 	const updateState = function (newState) {
 		// state를 업데이트한다.
-		state = Object.assign({}, state, newState);
+		state = cloneObject(newState);
 
 		// 변경된 state 정보를 가지고 tree 를 갱신한다.
 		const newVirtualDomTree = setVirtualTreeNode(state);
