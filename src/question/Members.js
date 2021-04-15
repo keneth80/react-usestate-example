@@ -21,6 +21,7 @@ function Members({ list }) {
 		// q1. state 변경 함수(updateState)를 완성하시오.
 		// TODO: Write JS code here!'
 		// state를 업데이트한다.
+		
 
 		// 변경된 state 정보를 가지고 tree 를 갱신한다.
 		const newVirtualDomTree = setVirtualTreeNode(state);
@@ -39,7 +40,7 @@ function Members({ list }) {
 	* @returns [현재값, 변경 함수]
 	* @description react useState함수와 같은 역할
 	*/
-	const useState = function (value) {
+	const useState = function (list) {
 		// q2. useState 함수를 [value, function]을 반환하도록 완성하시오.
         // TODO: Write JS code here!'
 		return [];

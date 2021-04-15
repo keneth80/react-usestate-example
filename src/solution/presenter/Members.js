@@ -39,15 +39,15 @@ function Members({ list }) {
 	* @returns [현재값, 변경 함수]
 	* @description react useState함수와 같은 역할
 	*/
-	const useState = function (value) {
+	const useState = function (list) {
 		// 초기값 지정
 		if (!state) {
-			state = { value };
+			state = { list };
 		}
 
 		// 두번째 값인 함수로 state를 변경해야만 값이 바뀌도록 한다.
 		return [
-			state.value, // 최근 갱신된 값을 제공한다.
+			state.list, // 최근 갱신된 값을 제공한다.
 			list => updateState({ list })
 		];
 	}
