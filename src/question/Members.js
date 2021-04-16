@@ -22,6 +22,7 @@ function Members({ list }) {
 	* @description state 변경에 따른 rendering
 	*/
 	const render = function (state) {
+		currentState = 0 // 새롭게 랜더링 하므로 초기화
 		// 변경된 state 정보를 가지고 tree 를 갱신한다.
 		const newVirtualDomTree = setVirtualTreeNode(state);
 		// 변경된 정보를 체크한다.
@@ -60,7 +61,6 @@ function Members({ list }) {
 	* @description list를 인자로 받아 data가 binding 된 virtual tree 구축 및 action 함수 정의.
 	*/
 	const setVirtualTreeNode = function (list = []) {
-		currentState = 0 // 새롭게 랜더링 하므로 초기화
 		const [members, setMembers] = useState(list);
 
 		// q3. 데이터 변경을 위한 함수를 완성하시오.
