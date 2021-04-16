@@ -12,7 +12,9 @@ function Members({ list }) {
 	// html node
 	let htmlNode = null;
 	// hook이 등록될때마다 state가 저장되는 변수.
-	let states = [], currentState = 0;
+	let states = [];
+	// hook 실행 index
+	let currentState = 0;
 
 	/**
 	* @name render
