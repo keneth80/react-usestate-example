@@ -24,7 +24,7 @@ function Members({ list }) {
 		// state를 업데이트한다.
 
 		// 변경된 state 정보를 가지고 tree 를 갱신한다.
-		const newVirtualDomTree = setVirtualTreeNode(state);
+		const newVirtualDomTree = setVirtualTreeNode();
 		// 변경된 정보를 체크한다.
 		const changes = diff(virtualDomTree, newVirtualDomTree);
 
@@ -43,6 +43,7 @@ function Members({ list }) {
 	const useState = function (list) {
 		// q2. useState 함수를 [value, function]을 반환하도록 완성하시오.
 		// TODO: Write JS code here!'
+
 		return [];
 	}
 

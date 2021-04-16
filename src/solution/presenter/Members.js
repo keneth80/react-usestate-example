@@ -21,7 +21,7 @@ function Members({ list }) {
 	*/
 	const updateState = function (newState) {
 		// state를 업데이트한다.
-		state = cloneObject(newState);
+		state = newState;
 
 		// 변경된 state 정보를 가지고 tree 를 갱신한다.
 		const newVirtualDomTree = setVirtualTreeNode(state);
@@ -59,7 +59,7 @@ function Members({ list }) {
 	* @returns virtual node
 	* @description list를 인자로 받아 data가 binding 된 virtual tree 구축 및 action 함수 정의.
 	*/
-	const setVirtualTreeNode = function ({ list }) {
+	const setVirtualTreeNode = function (list) {
 		// members 라는 이름으로 state 변수를 선언하고 넘겨받은 값으로 초기화 하고
 		// members의 값을 변경하려면 setMembers를 호출합니다.
 		// 이때 대괄호 왼쪽의 state 변수는 사용하고 싶은 이름으로 선언할 수 있음. (자바스크립트 문법인 배열구조분해)
@@ -69,7 +69,8 @@ function Members({ list }) {
 			if (window.event.keyCode === 13) {
 				members.push(event.target.value);
 				event.target.value = '';
-				setMembers(members);
+				// 새로운 데이터로 넣어줌.
+				setMembers(cloneObject(members));
 			}
 		};
 
@@ -77,7 +78,8 @@ function Members({ list }) {
 			const inputElement = htmlNode.querySelector('#memberInput');
 			members.push(inputElement.value);
 			inputElement.value = '';
-			setMembers(members);
+			// 새로운 데이터로 넣어줌.
+			setMembers(cloneObject(members));
 		}
 
 		return h('div', { style: 'width: 100%; margin-top: 10px' }, [
@@ -94,7 +96,7 @@ function Members({ list }) {
 	}
 
 	// virtual tree node를 갱신
-	virtualDomTree = setVirtualTreeNode({ list });
+	virtualDomTree = setVirtualTreeNode(list);
 	//virtual tree node를 html node로 생성
 	htmlNode = create(virtualDomTree);
 	return htmlNode;
