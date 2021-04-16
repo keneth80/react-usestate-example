@@ -7,22 +7,19 @@ import { cloneObject } from './util';
 * @description 생성자 함수로 최초 데이터를 받아서 virtual tree 구축과 함께 HTML node를 생성 및 저장한다.
 */
 function Members({ list }) {
-	// data를 저장하는 state 변수
-	let state = null;
 	// virtual dom tree
 	let virtualDomTree = null;
 	// html node
 	let htmlNode = null;
+	// hook이 등록될때마다 state가 저장되는 변수.
+	let states = [], currentState = 0;
 
 	/**
-	* @name updateState
+	* @name render
 	* @param {*} newState
-	* @description state 변경에 따른 virtual dom update
+	* @description state 변경에 따른 rendering
 	*/
-	const updateState = function (newState) {
-		// state를 업데이트한다.
-		state = newState;
-
+	const render = function (state) {
 		// 변경된 state 정보를 가지고 tree 를 갱신한다.
 		const newVirtualDomTree = setVirtualTreeNode(state);
 		// 변경된 정보를 체크한다.
@@ -40,16 +37,20 @@ function Members({ list }) {
 	* @returns [현재값, 변경 함수]
 	* @description react useState함수와 같은 역할
 	*/
-	const useState = function (list) {
-		// 초기값 지정
-		if (!state) {
-			state = { list };
+	const useState = function (initialValue) {
+		states[currentState] = states[currentState] || initialValue;
+		// updateState 함수에서 currentState가 덮어 씌워지는 것을 방지.
+		const updateStateIndex = currentState;
+		const updateState = (newState) => {
+			states[updateStateIndex] = newState;
+			// data가 업데이트 되면 re render
+			render(states[updateStateIndex]);
 		}
 
 		// 두번째 값인 함수로 state를 변경해야만 값이 바뀌도록 한다.
 		return [
-			state.list, // 최근 갱신된 값을 제공한다.
-			list => updateState({ list })
+			states[currentState++],
+			updateState
 		];
 	}
 
@@ -59,10 +60,8 @@ function Members({ list }) {
 	* @returns virtual node
 	* @description list를 인자로 받아 data가 binding 된 virtual tree 구축 및 action 함수 정의.
 	*/
-	const setVirtualTreeNode = function (list) {
-		// members 라는 이름으로 state 변수를 선언하고 넘겨받은 값으로 초기화 하고
-		// members의 값을 변경하려면 setMembers를 호출합니다.
-		// 이때 대괄호 왼쪽의 state 변수는 사용하고 싶은 이름으로 선언할 수 있음. (자바스크립트 문법인 배열구조분해)
+	const setVirtualTreeNode = function (list = []) {
+		currentState = 0 // 새롭게 렌더링 하므로 초기화
 		const [members, setMembers] = useState(list);
 
 		const onKeyUp = (event) => {

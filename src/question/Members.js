@@ -7,24 +7,23 @@ import { cloneObject } from './util';
 * @description 생성자 함수로 최초 데이터를 받아서 virtual tree 구축과 함께 HTML node를 생성 및 저장한다.
 */
 function Members({ list }) {
-	// data를 저장하는 state 변수
-	let state = { list };
 	// virtual dom tree
 	let virtualDomTree = null;
 	// html node
 	let htmlNode = null;
-	/**
-	* @name updateState
-	* @param {*} newState
-	* @description state 변경에 따른 virtual dom update
-	*/
-	const updateState = function (newState) {
-		// q1. state 변경 함수(updateState)를 완성하시오.
-		// TODO: Write JS code here!'
-		// state를 업데이트한다.
+	// hook이 등록될때마다 state가 저장되는 변수.
+	let states = [];
+	// hook 실행 index
+	let currentState = 0;
 
+	/**
+	* @name render
+	* @param {*} newState
+	* @description state 변경에 따른 rendering
+	*/
+	const render = function (state) {
 		// 변경된 state 정보를 가지고 tree 를 갱신한다.
-		const newVirtualDomTree = setVirtualTreeNode();
+		const newVirtualDomTree = setVirtualTreeNode(state);
 		// 변경된 정보를 체크한다.
 		const changes = diff(virtualDomTree, newVirtualDomTree);
 
@@ -40,10 +39,17 @@ function Members({ list }) {
 	* @returns [현재값, 변경 함수]
 	* @description react useState함수와 같은 역할
 	*/
-	const useState = function (list) {
-		// q2. useState 함수를 [value, function]을 반환하도록 완성하시오.
+	const useState = function (initialValue) {
+		// q1. useState 함수를 [value, function]을 반환하도록 완성하시오.
 		// TODO: Write JS code here!'
+		
+		const updateState = (newState) => {
+			// q2. state가 업데이트 될 때 rendering이 되도록 작성하시오.
+			// TODO: Write JS code here!'
+			// data가 업데이트 되면 re render
+		}
 
+		// 두번째 값인 함수로 state를 변경해야만 값이 바뀌도록 한다.
 		return [];
 	}
 
@@ -53,7 +59,8 @@ function Members({ list }) {
 	* @returns virtual node
 	* @description list를 인자로 받아 data가 binding 된 virtual tree 구축 및 action 함수 정의.
 	*/
-	const setVirtualTreeNode = function ({ list }) {
+	const setVirtualTreeNode = function (list = []) {
+		currentState = 0 // 새롭게 랜더링 하므로 초기화
 		const [members, setMembers] = useState(list);
 
 		// q3. 데이터 변경을 위한 함수를 완성하시오.
@@ -81,7 +88,7 @@ function Members({ list }) {
 	}
 
 	// virtual tree node를 갱신
-	virtualDomTree = setVirtualTreeNode({ list });
+	virtualDomTree = setVirtualTreeNode(list);
 	//virtual tree node를 html node로 생성
 	htmlNode = create(virtualDomTree);
 	return htmlNode;

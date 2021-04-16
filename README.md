@@ -32,9 +32,9 @@ Run `npm run dev`
 
 
 ## 문제
-- q1. state 변경 함수(updateState)를 완성하시오.
+- q1. useState 함수를 [value, function]을 반환하도록 완성하시오.
 
-- q2. useState 함수를 [value, function]을 반환하도록 완성하시오.
+- q2. state가 업데이트 될 때 re rendering이 되도록 작성하시오.
 
 - q3. 데이터 변경을 위한 함수를 완성하시오.
 
