@@ -22,7 +22,7 @@ function Members({ list }) {
 	* @description state 변경에 따른 rendering
 	*/
 	const render = function (state) {
-		currentState = 0 // 새롭게 렌더링 하므로 초기화
+		currentState = 0; // 새롭게 렌더링 하므로 초기화
 		// 변경된 state 정보를 가지고 tree 를 갱신한다.
 		const newVirtualDomTree = setVirtualTreeNode(state);
 		// 변경된 정보를 체크한다.
