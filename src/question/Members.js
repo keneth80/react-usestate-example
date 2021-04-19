@@ -1,5 +1,4 @@
 import { h, create, diff, patch } from 'virtual-dom';
-import { cloneObject } from './util';
 
 /**
 * @name 생성자 함수

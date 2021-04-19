@@ -1,5 +1,4 @@
 import { h, create, diff, patch } from 'virtual-dom';
-import { cloneObject } from './util';
 
 /**
 * @name 생성자 함수
@@ -70,8 +69,7 @@ function Members({ list }) {
 			if (window.event.keyCode === 13) {
 				members.push(event.target.value);
 				event.target.value = '';
-				// 새로운 데이터로 넣어줌.
-				setMembers(cloneObject(members));
+				setMembers(members);
 			}
 		};
 
@@ -79,8 +77,7 @@ function Members({ list }) {
 			const inputElement = htmlNode.querySelector('#memberInput');
 			members.push(inputElement.value);
 			inputElement.value = '';
-			// 새로운 데이터로 넣어줌.
-			setMembers(cloneObject(members));
+			setMembers(members);
 		}
 
 		return h('div', { style: 'width: 100%; margin-top: 10px' }, [
