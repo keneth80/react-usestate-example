@@ -21,6 +21,8 @@ function Members({ list }) {
 	* @description state 변경에 따른 rendering
 	*/
 	const render = function (state) {
+		// virtual-dom 라이브러리는 html node가 변경되 전 virtual dom을 메모리에 저장하고
+		// 이전 virtual dom과 비교하여 변경된 부분만 html node에 반영해주는 라이브러리 입니다.
 		currentState = 0; // 새롭게 랜더링 하므로 초기화
 		// 변경된 state 정보를 가지고 tree 를 갱신한다.
 		const newVirtualDomTree = setVirtualTreeNode(state);
@@ -42,7 +44,8 @@ function Members({ list }) {
 	const useState = function (initialValue) {
 		// q1. useState 함수를 [value, function]을 반환하도록 완성하시오.
 		// TODO: Write JS code here!'
-		
+
+		const updateStateIndex = currentState;
 		const updateState = (newState) => {
 			// q2. state가 업데이트 될 때 rendering이 되도록 작성하시오.
 			// TODO: Write JS code here!'
